@@ -38,13 +38,35 @@
     .logo-area {
       display: flex;
       justify-content: center;
+      align-items: center;
       margin-bottom: 1rem;
+      min-height: 80px;
     }
 
     .real-logo-img {
       max-height: 80px;
       width: auto;
       object-fit: contain;
+    }
+
+    /* Fallback text logo if image fails */
+    .fallback-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(11, 61, 46, 0.05);
+      padding: 8px 20px;
+      border-radius: 80px;
+    }
+    
+    .fallback-icon {
+      font-size: 32px;
+    }
+    
+    .fallback-text {
+      font-weight: 600;
+      color: #0B3D2E;
+      font-size: 0.85rem;
     }
 
     h1 {
@@ -93,11 +115,11 @@
       color: #0B3D2E;
     }
 
-    /* Document Grid */
+    /* Document Grid - FIXED: more space between cards */
     .doc-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1.5rem;
+      gap: 2rem;  /* INCREASED from 1.5rem to 2rem for more breathing room */
       margin: 2rem 0;
     }
 
@@ -203,20 +225,6 @@
       transform: translateY(-1px);
     }
 
-    /* Section categories (for scaling) */
-    .category-section {
-      margin: 2.5rem 0 1.5rem 0;
-    }
-
-    .category-title {
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: #0B3D2E;
-      border-left: 4px solid #C9A227;
-      padding-left: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
     /* Footer */
     footer {
       text-align: center;
@@ -235,7 +243,7 @@
       
       .doc-grid {
         grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 1.5rem;  /* Good spacing on mobile too */
       }
       
       .doc-buttons {
@@ -245,15 +253,10 @@
       .real-logo-img {
         max-height: 55px;
       }
-    }
-
-    /* Placeholder empty state (visible only if no documents) */
-    .empty-state {
-      text-align: center;
-      padding: 3rem;
-      background: white;
-      border-radius: 20px;
-      color: #8a9a98;
+      
+      .logo-area {
+        min-height: 60px;
+      }
     }
   </style>
 </head>
@@ -261,7 +264,7 @@
 
 <div class="container">
   
-  <!-- Header with logo detection (same as main page) -->
+  <!-- Header with logo detection -->
   <header>
     <div class="logo-area" id="brandLogo"></div>
     <h1>Nasarawa Investment Summit</h1>
@@ -273,106 +276,92 @@
 
   <!-- Intro text -->
   <div class="intro">
-    Browse and access official summit materials below. Documents will be added as they become available.
+    Browse and access official summit materials below.
   </div>
 
-  <!-- DOCUMENT SECTION - READY FOR SCALING -->
-  <!-- 
-    ============================================
-    HOW TO ADD REAL DOCUMENTS:
-    ============================================
-    1. Upload file to Google Drive
-    2. Set sharing to "Anyone with the link can view"
-    3. Copy FILE_ID from URL: 
-       https://drive.google.com/file/d/FILE_ID/view
-    4. Replace FILE_ID in both links below
-    5. Duplicate the entire .doc-card block for each document
-    ============================================
-  -->
-
-  <!-- Category: Welcome & Orientation (example category - remove if not needed) -->
-  <!-- div class="category-section">
-    <div class="category-title">Welcome & Orientation</div>
-    <div class="doc-grid">
-      
-      <!-- SAMPLE DOCUMENT CARD 1 - Replace with real document -->
-      <div class="doc-card">
-        <div class="doc-icon">📄</div>
-        <div class="doc-title">Summit Welcome Packet</div>
-        <div class="doc-description">Official welcome letter, schedule overview, and attendee guidelines.</div>
-        <div class="doc-meta">
-          <span class="file-type">📎 PDF</span>
-          <span class="file-size">📏 2.4 MB</span>
-        </div>
-        <div class="doc-buttons">
-          <a class="doc-btn btn-preview" href="#" target="_blank">👁️ Preview</a>
-          <a class="doc-btn btn-download" href="#" target="_blank">⬇️ Download</a>
-        </div>
+  <!-- DOCUMENT GRID - Cards only (no category wrapper) -->
+  <div class="doc-grid">
+    
+    <!-- DOCUMENT CARD 1 - Sample (replace with real document) -->
+    <div class="doc-card">
+      <div class="doc-icon">📄</div>
+      <div class="doc-title">Summit Welcome Packet</div>
+      <div class="doc-description">Official welcome letter, schedule overview, and attendee guidelines.</div>
+      <div class="doc-meta">
+        <span class="file-type">📎 PDF</span>
+        <span class="file-size">📏 2.4 MB</span>
       </div>
-
-      <!-- SAMPLE DOCUMENT CARD 2 -->
-      <div class="doc-card">
-        <div class="doc-icon">📋</div>
-        <div class="doc-title">Agenda at a Glance</div>
-        <div class="doc-description">Daily schedule of sessions, speakers, and special events.</div>
-        <div class="doc-meta">
-          <span class="file-type">📎 PDF</span>
-          <span class="file-size">📏 1.1 MB</span>
-        </div>
-        <div class="doc-buttons">
-          <a class="doc-btn btn-preview" href="#" target="_blank">👁️ Preview</a>
-          <a class="doc-btn btn-download" href="#" target="_blank">⬇️ Download</a>
-        </div>
+      <div class="doc-buttons">
+        <a class="doc-btn btn-preview" href="#" target="_blank">👁️ Preview</a>
+        <a class="doc-btn btn-download" href="#" target="_blank">⬇️ Download</a>
       </div>
-
-    <!--/div>
-  </div>
-
-  <!-- Category: Presentations (uncomment when needed) 
-  <div class="category-section">
-    <div class="category-title">Keynote Presentations</div>
-    <div class="doc-grid">
-      Add presentation cards here
     </div>
-  </div>
-  -->
 
-  <!-- Category: Reports & Publications 
-  <div class="category-section">
-    <div class="category-title">Reports & Publications</div>
-    <div class="doc-grid">
-      Add report cards here
+    <!-- DOCUMENT CARD 2 - Sample -->
+    <div class="doc-card">
+      <div class="doc-icon">📋</div>
+      <div class="doc-title">Agenda at a Glance</div>
+      <div class="doc-description">Daily schedule of sessions, speakers, and special events.</div>
+      <div class="doc-meta">
+        <span class="file-type">📎 PDF</span>
+        <span class="file-size">📏 1.1 MB</span>
+      </div>
+      <div class="doc-buttons">
+        <a class="doc-btn btn-preview" href="#" target="_blank">👁️ Preview</a>
+        <a class="doc-btn btn-download" href="#" target="_blank">⬇️ Download</a>
+      </div>
     </div>
+
+    <!-- DOCUMENT CARD 3 - Sample (shows spacing) -->
+    <div class="doc-card">
+      <div class="doc-icon">📊</div>
+      <div class="doc-title">Investment Overview Report</div>
+      <div class="doc-description">Key investment opportunities and sector highlights for 2026.</div>
+      <div class="doc-meta">
+        <span class="file-type">📎 PDF</span>
+        <span class="file-size">📏 3.2 MB</span>
+      </div>
+      <div class="doc-buttons">
+        <a class="doc-btn btn-preview" href="#" target="_blank">👁️ Preview</a>
+        <a class="doc-btn btn-download" href="#" target="_blank">⬇️ Download</a>
+      </div>
+    </div>
+
   </div>
-  -->
 
   <!-- Footer -->
   <footer>
-    © Nasarawa Investment Summit. All rights reserved.<br>
-    <span style="font-size: 11px;">Documents will be updated as materials become available.</span>
+    © Nasarawa Investment Summit. All rights reserved.
   </footer>
 </div>
 
-<!-- Logo detection script (same as main page) -->
+<!-- Logo detection script - IMPROVED for reliability -->
 <script>
   (function() {
     const logoContainer = document.getElementById('brandLogo');
     if (!logoContainer) return;
     
-    const logoImgSrc = './assets/logo.jpeg';
-    const imgTest = new Image();
-    imgTest.onload = function() {
+    // Try to load the logo image
+    const logoImgSrc = './assets/logo.png';
+    const img = new Image();
+    
+    img.onload = function() {
+      // Logo loaded successfully
       logoContainer.innerHTML = `<img src="${logoImgSrc}" alt="Nasarawa Investment Summit Official Logo" class="real-logo-img">`;
     };
-    imgTest.onerror = function() {
+    
+    img.onerror = function() {
+      // Logo not found - show fallback (so page never looks empty)
       logoContainer.innerHTML = `
-        <div style="display: inline-flex; align-items: center; gap: 12px; background: rgba(11, 61, 46, 0.05); padding: 8px 20px; border-radius: 80px;">
-          <span style="font-size: 32px;">🏛️</span>
-          <span style="font-weight: 600; color: #0B3D2E; font-size: 0.85rem;">Nasarawa Investment Summit</span>
+        <div class="fallback-logo">
+          <span class="fallback-icon">🏛️</span>
+          <span class="fallback-text">Nasarawa Investment Summit</span>
         </div>
       `;
     };
-    imgTest.src = logoImgSrc;
+    
+    // Start loading the image
+    img.src = logoImgSrc;
   })();
 </script>
 
