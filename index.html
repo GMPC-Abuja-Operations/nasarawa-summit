@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Nasarawa Investment Summit | Official Participant Portal</title>
+  
+  <!-- Preconnect to Google Fonts for faster load -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Inter Font: variable weight for performance & modern rendering -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ---------- RESET + BASE ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #F7F9FB;   /* Soft white background */
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+      color: #1A1A1A;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Center container with official max width & generous padding */
+    .portal-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 2rem 1.5rem;
+      width: 100%;
+    }
+
+    /* ----- TYPOGRAPHY (exact hierarchy) ----- */
+    h1 {
+      font-size: clamp(32px, 7vw, 44px);   /* responsive: 32-44px */
+      font-weight: 700;
+      color: #0B3D2E;    /* deep green – trust */
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .summit-subtitle {
+      font-size: clamp(16px, 4vw, 20px);
+      font-weight: 500;
+      color: #2c3e3a;
+      border-bottom: 2px solid rgba(201, 162, 39, 0.25);
+      display: inline-block;
+      padding-bottom: 6px;
+      margin-top: 4px;
+    }
+
+    /* intro text */
+    .hero-intro {
+      font-size: 16px;      /* 16px body standard */
+      font-weight: 400;
+      color: #2d3e3a;
+      background: rgba(11, 61, 46, 0.03);
+      padding: 1rem 1.2rem;
+      border-radius: 20px;
+      margin: 2rem 0 1.5rem 0;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+      backdrop-filter: blur(1px);
+    }
+
+    /* ----- SECTION HEADINGS (if any future expansions, but for subtle support area) */
+    .support-heading {
+      font-size: 22px;
+      font-weight: 600;
+      color: #0B3D2E;
+      margin-bottom: 1rem;
+    }
+
+    /* ----- BUTTON PANEL (critical action area) ----- */
+    .action-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin: 2rem 0 2.5rem 0;
+    }
+
+    /* Button base: large, rounded, accessible */
+    .portal-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 18px;        /* 16-18px category, using 18 for prominence */
+      padding: 1rem 1.75rem;
+      border-radius: 12px;    /* between 8-12px, using 12 for modern but official */
+      transition: all 0.2s ease;
+      text-align: center;
+      min-height: 68px;       /* generous click area (above 48px) */
+      letter-spacing: -0.2px;
+      border: none;
+      cursor: pointer;
+      background: #0B3D2E;
+      color: white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.03);
+    }
+
+    /* Survey button (primary) */
+    .btn-survey {
+      background: #0B3D2E;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-survey:hover {
+      background: #062b20;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(11, 61, 46, 0.2);
+    }
+
+    /* Documents button (secondary navy) */
+    .btn-docs {
+      background: #1F4E79;   /* navy authority */
+    }
+
+    .btn-docs:hover {
+      background: #163b5c;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(31, 78, 121, 0.2);
+    }
+
+    /* active/ focus states for accessibility */
+    .portal-btn:focus-visible {
+      outline: 3px solid #C9A227;
+      outline-offset: 3px;
+      border-radius: 12px;
+    }
+
+    /* icon styling (emoji or optional svg, but we use native unicode for speed) */
+    .btn-icon {
+      font-size: 1.5rem;
+      display: inline-block;
+    }
+
+    /* ---- Optional support info (section 4) ---- */
+    .support-info {
+      margin: 2.5rem auto 1.5rem auto;
+      background: #FFFFFF;
+      border-radius: 24px;
+      padding: 1.5rem 1.8rem;
+      max-width: 780px;
+      border: 1px solid #E9EDF2;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+    }
+
+    .support-details {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.8rem;
+      row-gap: 1rem;
+      font-size: 0.9rem;
+      color: #3b4a4a;
+    }
+
+    .support-item {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      font-weight: 500;
+      background: #F8FAFE;
+      padding: 0.4rem 1rem;
+      border-radius: 60px;
+    }
+
+    .support-label {
+      font-weight: 600;
+      color: #0B3D2E;
+    }
+
+    .support-value {
+      color: #2c3e2f;
+    }
+
+    /* email link style official clean */
+    .support-value a {
+      color: #1F4E79;
+      text-decoration: none;
+      border-bottom: 1px dotted #C9A227;
+    }
+
+    .support-value a:hover {
+      color: #0B3D2E;
+      border-bottom: 1px solid #C9A227;
+    }
+
+    /* ----- FOOTER (official) ----- */
+    .official-footer {
+      margin-top: 2.8rem;
+      padding-top: 1.8rem;
+      text-align: center;
+      border-top: 1px solid #DCE3E9;
+      font-size: 13px;
+      color: #6b7c7a;
+      font-weight: 400;
+      letter-spacing: 0.2px;
+    }
+
+    /* ----- small/ micro responsive adjustments ----- */
+    @media (min-width: 640px) {
+      .portal-container {
+        padding: 2.5rem 2rem 3rem;
+      }
+      
+      .action-grid {
+        max-width: 580px;
+        margin-left: auto;
+        margin-right: auto;
+        gap: 1.5rem;
+      }
+      
+      .portal-btn {
+        padding: 1rem 2rem;
+        font-size: 18px;
+        min-height: 70px;
+      }
+    }
+
+    /* full-width on mobile, buttons stack vertically */
+    @media (max-width: 639px) {
+      .portal-container {
+        padding: 1.75rem 1.25rem;
+      }
+      
+      .portal-btn {
+        width: 100%;
+        min-height: 60px;
+        font-size: 17px;
+      }
+      
+      .hero-intro {
+        font-size: 15px;
+        margin: 1.5rem 0 1.25rem;
+      }
+      
+      .support-info {
+        padding: 1.2rem;
+      }
+      
+      .support-details {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+      }
+    }
+
+    /* ensure no horizontal scroll */
+    img, svg, iframe {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* subtle logo area: we embed optional logo via inline img placeholder with gov feel */
+    .logo-area {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    
+    .logo-emblem {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(11, 61, 46, 0.05);
+      padding: 8px 20px;
+      border-radius: 80px;
+    }
+    
+    .logo-icon {
+      font-size: 32px;
+      filter: drop-shadow(0 1px 1px rgba(0,0,0,0.1));
+    }
+    
+    .badge-text {
+      font-weight: 600;
+      color: #0B3D2E;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      background: #FFFFFFC9;
+      padding: 4px 12px;
+      border-radius: 30px;
+    }
+    
+    /* alternative: if actual logo.png is provided, we show an image; but we also handle hybrid with official mock-logo,
+       but per design, if user uploads logo.png later, it works. For now we avoid placeholder broken image -> optimized */
+    .visual-logo {
+      display: none;
+    }
+    
+    /* but we support logo image if it exists in assets folder without breaking */
+    .real-logo-img {
+      max-height: 64px;
+      width: auto;
+      object-fit: contain;
+    }
+    
+    /* preload friendly */
+  </style>
+</head>
+<body>
+
+<div class="portal-container">
+  
+  <!-- HEADER SECTION with brand logo & identity (Section 1) -->
+  <header style="text-align: center;">
+    <!-- Logo container - dynamic handling: if logo.png exists in assets/logo.png we show it, otherwise we use an elegant gov style emblem -->
+    <div class="logo-area" id="brandLogo">
+      <!-- We'll detect if the custom logo exists, else fallback to a clean institutional badge (no text junk) 
+           but per guide: either logo left or centered - we keep centered and minimal -->
+      <div class="logo-emblem" aria-label="Official crest">
+        <span class="logo-icon">🏛️</span>
+        <span class="badge-text">Official Portal</span>
+      </div>
+    </div>
+    
+    <!-- H1 & Subtitle -->
+    <h1>Nasarawa Investment Summit</h1>
+    <p class="summit-subtitle">Official Resources & Participant Portal</p>
+  </header>
+  
+  <!-- SECTION 2 — HERO / Minimal intro -->
+  <div class="hero-intro">
+    Welcome. Please select an option below to access the survey or event materials.
+  </div>
+  
+  <!-- SECTION 3 — MAIN ACTION AREA (only two critical buttons) -->
+  <div class="action-grid">
+    <!-- BUTTON 1: Survey (Google Forms) - actual links are configurable; using placeholder but ready for production -->
+    <a class="portal-btn btn-survey" href="https://forms.gle/XYQ7sampleReplaceWithRealLink" target="_blank" rel="noopener noreferrer">
+      <span class="btn-icon">📋</span>
+      <span>Take Participant Survey</span>
+    </a>
+    
+    <!-- BUTTON 2: Event Documents (Google Drive folder) -->
+    <a class="portal-btn btn-docs" href="https://drive.google.com/drive/folders/example-folder-id-placeholder" target="_blank" rel="noopener noreferrer">
+      <span class="btn-icon">📁</span>
+      <span>View Event Documents</span>
+    </a>
+  </div>
+  
+  <!-- SECTION 4 — OPTIONAL SUPPORT INFO (Authority & contact, official look) -->
+  <div class="support-info">
+    <div class="support-details">
+      <div class="support-item">
+        <span class="support-label">🏛️ Organizer:</span>
+        <span class="support-value">Nasarawa Investment and Development Agency (NASIDA)</span>
+      </div>
+      <div class="support-item">
+        <span class="support-label">📧 Official Contact:</span>
+        <span class="support-value"><a href="mailto:summit@nasarawainvest.gov.ng">summit@nasarawainvest.gov.ng</a></span>
+      </div>
+      <div class="support-item">
+        <span class="support-label">📅 Summit Dates:</span>
+        <span class="support-value">6–7 May 2026</span>
+      </div>
+    </div>
+    <!-- additional small note: event venue minimal ( optional but fits stakeholder trust )-->
+    <p style="font-size: 12px; text-align: center; margin-top: 14px; color: #6c7e7b;">🏨 Government House Banquet Hall & Lafia City Centre. All resources are official.</p>
+  </div>
+  
+  <!-- SECTION 5 — FOOTER (official & simple) -->
+  <footer class="official-footer">
+    © Nasarawa Investment Summit. All rights reserved.
+  </footer>
+</div>
+
+<!-- Simple script to implement dynamic logo detection if real logo.png file exists? 
+     According to the guide we should allow creative but trust: optional banner or logo optional but we implement 
+     robustly: using Fetch or img onerror? no, it increases complexity. Best: we provide static institutional emblem that adapts if user uploads assets/logo.png,
+     because we set up styles so that we can automatically replace with image if exists. But we need to keep gov look.
+     Additionally, we add micro interaction to adapt placeholder to actual asset if present (non-intrusive) -->
+<script>
+  (function() {
+    // Graceful enhancement: If a logo image exists at assets/logo.png, we replace the emblem with the real branded logo.
+    // This respects file structure and gives immediate official branding flexibility.
+    // No external dependencies, clean and fast.
+    const logoContainer = document.getElementById('brandLogo');
+    if (!logoContainer) return;
+    
+    // test for existence of logo.png in the assets folder (relative path)
+    const logoImgSrc = './assets/logo.png';
+    const imgTest = new Image();
+    imgTest.onload = function() {
+      // logo exists, replace the current emblem with a clean logo image
+      if (logoContainer) {
+        // preserve same layout alignment and government credibility
+        logoContainer.innerHTML = `<img src="${logoImgSrc}" alt="Nasarawa Investment Summit Official Logo" class="real-logo-img" style="max-height: 70px; width: auto; margin: 0 auto; display: block;">`;
+        // also adjust for extra spacing
+        const wrapper = logoContainer.querySelector('img');
+        if (wrapper) wrapper.style.margin = '0 auto';
+      }
+    };
+    imgTest.onerror = function() {
+      // logo not present — keep the elegant fallback (we also keep option for banner optional)
+      // we also check if maybe a banner.jpg can be optionally used? But only per design we don't force.
+      // we keep default crest-like emblem, no change.
+      // no action needed, already perfect.
+    };
+    imgTest.src = logoImgSrc;
+  })();
+</script>
+
+<!-- Additional micro-optimizations: preconnect for external links smooth -->
+</body>
+</html>
