@@ -168,15 +168,63 @@
     }
 
     .support-item {
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-      font-weight: 500;
-      background: #F8FAFE;
-      padding: 0.4rem 1rem;
-      border-radius: 60px;
-    }
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-weight: 500;
+  background: #F8FAFE;
+  padding: 0.4rem 1rem;
+  border-radius: 60px;
+  width: 100%;              /* ADD THIS - makes items full width on mobile */
+  justify-content: center;  /* ADD THIS - centers content */
+}
 
+/* Trust badges section - logos */
+.trust-badges {
+  margin-top: 1.8rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid #E9EDF2;
+}
+
+.trust-badges-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.trust-logo {
+  max-height: 48px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+.trust-logo:hover {
+  opacity: 1;
+}
+
+.trust-text {
+  font-size: 11px;
+  color: #8a9a98;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  background: #F0F3F6;
+  padding: 4px 10px;
+  border-radius: 30px;
+}
+
+@media (max-width: 639px) {
+  .trust-badges-inner {
+    gap: 1rem;
+  }
+  
+  .trust-logo {
+    max-height: 38px;
+  }
+}
     .support-label {
       font-weight: 600;
       color: #0B3D2E;
@@ -353,23 +401,32 @@
   
   <!-- SECTION 4 — OPTIONAL SUPPORT INFO (Authority & contact, official look) -->
   <div class="support-info">
-    <div class="support-details">
-      <div class="support-item">
-        <span class="support-label">🏛️ Organizer:</span>
-        <span class="support-value">Nasarawa Investment and Development Agency (NASIDA)</span>
-      </div>
-      <div class="support-item">
-        <span class="support-label">📧 Official Contact:</span>
-        <span class="support-value"><a href="mailto:summit@nasarawainvest.gov.ng">summit@nasarawainvest.gov.ng</a></span>
-      </div>
-      <div class="support-item">
-        <span class="support-label">📅 Summit Dates:</span>
-        <span class="support-value">6–7 May 2026</span>
-      </div>
+  <!-- Contact info section - now properly aligned -->
+  <div class="support-details">
+    <div class="support-item">
+      <span class="support-label">🏛️ Organizer:</span>
+      <span class="support-value">Nasarawa Investment and Development Agency (NASIDA)</span>
     </div>
-    <!-- additional small note: event venue minimal ( optional but fits stakeholder trust )-->
-    <p style="font-size: 12px; text-align: center; margin-top: 14px; color: #6c7e7b;">🏨 Government House Banquet Hall & Lafia City Centre. All resources are official.</p>
+    <div class="support-item">
+      <span class="support-label">📧 Official Contact:</span>
+      <span class="support-value"><a href="mailto:summit@nasarawainvest.gov.ng">summit@nasarawainvest.gov.ng</a></span>
+    </div>
+    <div class="support-item">
+      <span class="support-label">📅 Summit Dates:</span>
+      <span class="support-value">6–7 May 2026</span>
+    </div>
   </div>
+  
+  <!-- Logos section - trust badges, subtle and official -->
+  <div class="trust-badges">
+    <div class="trust-badges-inner">
+      <img src="./assets/nasida-logo.jpeg" alt="NASIDA Logo" class="trust-logo" id="nasidaLogo" onerror="this.style.display='none'">
+      <img src="./assets/nasarawa-state-logo.jpeg" alt="Nasarawa State Logo" class="trust-logo" id="stateLogo" onerror="this.style.display='none'">
+    </div>
+  </div>
+  
+  <p style="font-size: 12px; text-align: center; margin-top: 14px; color: #6c7e7b;">🏨 Government House Banquet Hall & Lafia City Centre</p>
+</div>
   
   <!-- SECTION 5 — FOOTER (official & simple) -->
   <footer class="official-footer">
