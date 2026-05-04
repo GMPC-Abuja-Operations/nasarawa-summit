@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Event Documents | Nasarawa Investment Summit</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #F7F9FB;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      color: #1A1A1A;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .logo-area {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .real-logo-img {
+      max-height: 80px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    h1 {
+      font-size: clamp(32px, 6vw, 40px);
+      font-weight: 700;
+      color: #0B3D2E;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .page-subtitle {
+      font-size: clamp(16px, 4vw, 20px);
+      font-weight: 500;
+      color: #2c3e3a;
+      border-bottom: 2px solid rgba(201, 162, 39, 0.25);
+      display: inline-block;
+      padding-bottom: 6px;
+    }
+
+    /* Intro */
+    .intro {
+      text-align: center;
+      max-width: 600px;
+      margin: 1.5rem auto 2.5rem auto;
+      font-size: 16px;
+      color: #4a5a56;
+      background: rgba(11, 61, 46, 0.03);
+      padding: 1rem 1.5rem;
+      border-radius: 16px;
+    }
+
+    /* Back link */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 2rem;
+      color: #1F4E79;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover {
+      color: #0B3D2E;
+    }
+
+    /* Document Grid */
+    .doc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    /* Document Card */
+    .doc-card {
+      background: white;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border: 1px solid #E9EDF2;
+    }
+
+    .doc-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Document icon */
+    .doc-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .doc-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #0B3D2E;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .doc-description {
+      font-size: 0.85rem;
+      color: #6b7c7a;
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+
+    .doc-meta {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      font-size: 0.75rem;
+      color: #8a9a98;
+      border-top: 1px solid #F0F3F6;
+      padding-top: 0.75rem;
+    }
+
+    .file-type {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #F0F3F6;
+      padding: 0.25rem 0.6rem;
+      border-radius: 20px;
+    }
+
+    .file-size {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Button group */
+    .doc-buttons {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 0.25rem;
+    }
+
+    .doc-btn {
+      flex: 1;
+      text-align: center;
+      padding: 0.6rem 0.75rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: none;
+      display: inline-block;
+    }
+
+    .btn-preview {
+      background: #1F4E79;
+      color: white;
+    }
+
+    .btn-preview:hover {
+      background: #163b5c;
+      transform: translateY(-1px);
+    }
+
+    .btn-download {
+      background: #0B3D2E;
+      color: white;
+    }
+
+    .btn-download:hover {
+      background: #062b20;
+      transform: translateY(-1px);
+    }
+
+    /* Section categories (for scaling) */
+    .category-section {
+      margin: 2.5rem 0 1.5rem 0;
+    }
+
+    .category-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #0B3D2E;
+      border-left: 4px solid #C9A227;
+      padding-left: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #DCE3E9;
+      font-size: 13px;
+      color: #6b7c7a;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 640px) {
+      .container {
+        padding: 1.25rem;
+      }
+      
+      .doc-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      
+      .doc-buttons {
+        flex-direction: row;
+      }
+      
+      .real-logo-img {
+        max-height: 55px;
+      }
+    }
+
+    /* Placeholder empty state (visible only if no documents) */
+    .empty-state {
+      text-align: center;
+      padding: 3rem;
+      background: white;
+      border-radius: 20px;
+      color: #8a9a98;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  
+  <!-- Header with logo detection (same as main page) -->
+  <header>
+    <div class="logo-area" id="brandLogo"></div>
+    <h1>Nasarawa Investment Summit</h1>
+    <div class="page-subtitle">Event Documents & Resources</div>
+  </header>
+
+  <!-- Back to portal link -->
+  <a href="index.html" class="back-link">← Back to Participant Portal</a>
+
+  <!-- Intro text -->
+  <div class="intro">
+    Browse and access official summit materials below. Documents will be added as they become available.
+  </div>
+
+  <!-- DOCUMENT SECTION - READY FOR SCALING -->
+  <!-- 
+    ============================================
+    HOW TO ADD REAL DOCUMENTS:
+    ============================================
+    1. Upload file to Google Drive
+    2. Set sharing to "Anyone with the link can view"
+    3. Copy FILE_ID from URL: 
+       https://drive.google.com/file/d/FILE_ID/view
+    4. Replace FILE_ID in both links below
+    5. Duplicate the entire .doc-card block for each document
+    ============================================
+  -->
+
+  <!-- Category: Welcome & Orientation (example category - remove if not needed) -->
+  <!-- div class="category-section">
+    <div class="category-title">Welcome & Orientation</div>
+    <div class="doc-grid">
+      
+      <!-- SAMPLE DOCUMENT CARD 1 - Replace with real document -->
+      <div class="doc-card">
+        <div class="doc-icon">📄</div>
+        <div class="doc-title">Summit Welcome Packet</div>
+        <div class="doc-description">Official welcome letter, schedule overview, and attendee guidelines.</div>
+        <div class="doc-meta">
+          <span class="file-type">📎 PDF</span>
+          <span class="file-size">📏 2.4 MB</span>
+        </div>
+        <div class="doc-buttons">
+          <a class="doc-btn btn-preview" href="#" target="_blank">👁️ Preview</a>
+          <a class="doc-btn btn-download" href="#" target="_blank">⬇️ Download</a>
+        </div>
+      </div>
+
+      <!-- SAMPLE DOCUMENT CARD 2 -->
+      <div class="doc-card">
+        <div class="doc-icon">📋</div>
+        <div class="doc-title">Agenda at a Glance</div>
+        <div class="doc-description">Daily schedule of sessions, speakers, and special events.</div>
+        <div class="doc-meta">
+          <span class="file-type">📎 PDF</span>
+          <span class="file-size">📏 1.1 MB</span>
+        </div>
+        <div class="doc-buttons">
+          <a class="doc-btn btn-preview" href="#" target="_blank">👁️ Preview</a>
+          <a class="doc-btn btn-download" href="#" target="_blank">⬇️ Download</a>
+        </div>
+      </div>
+
+    <!--/div>
+  </div>
+
+  <!-- Category: Presentations (uncomment when needed) 
+  <div class="category-section">
+    <div class="category-title">Keynote Presentations</div>
+    <div class="doc-grid">
+      Add presentation cards here
+    </div>
+  </div>
+  -->
+
+  <!-- Category: Reports & Publications 
+  <div class="category-section">
+    <div class="category-title">Reports & Publications</div>
+    <div class="doc-grid">
+      Add report cards here
+    </div>
+  </div>
+  -->
+
+  <!-- Footer -->
+  <footer>
+    © Nasarawa Investment Summit. All rights reserved.<br>
+    <span style="font-size: 11px;">Documents will be updated as materials become available.</span>
+  </footer>
+</div>
+
+<!-- Logo detection script (same as main page) -->
+<script>
+  (function() {
+    const logoContainer = document.getElementById('brandLogo');
+    if (!logoContainer) return;
+    
+    const logoImgSrc = './assets/logo.jpeg';
+    const imgTest = new Image();
+    imgTest.onload = function() {
+      logoContainer.innerHTML = `<img src="${logoImgSrc}" alt="Nasarawa Investment Summit Official Logo" class="real-logo-img">`;
+    };
+    imgTest.onerror = function() {
+      logoContainer.innerHTML = `
+        <div style="display: inline-flex; align-items: center; gap: 12px; background: rgba(11, 61, 46, 0.05); padding: 8px 20px; border-radius: 80px;">
+          <span style="font-size: 32px;">🏛️</span>
+          <span style="font-weight: 600; color: #0B3D2E; font-size: 0.85rem;">Nasarawa Investment Summit</span>
+        </div>
+      `;
+    };
+    imgTest.src = logoImgSrc;
+  })();
+</script>
+
+</body>
+</html>
